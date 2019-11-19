@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import Tabela from './Tabela';
 import Formulario from './Formulario';
+import Header from './Header';
 
 class App extends Component {
   state = {
@@ -41,15 +43,19 @@ class App extends Component {
     );
   }
 
-  escutadorDeSubmit = autor =>{
-    this.setState({autores: [...this.state.autores, autor]});
+  escutadorDeSubmit = autor => {
+    this.setState({ autores: [...this.state.autores, autor] });
   }
 
   render() {
     return (
       <div>
-        <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
-        <Formulario escutadorDeSubmit={this.escutadorDeSubmit} />
+        <Header />
+        <div className="container mb-10">
+          <h1>Casa do código</h1>
+          <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+          <Formulario escutadorDeSubmit={this.escutadorDeSubmit} />
+        </div>
       </div>
     );
   }
